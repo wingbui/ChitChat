@@ -29,7 +29,7 @@ class LogInViewController: UIViewController {
     //MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setUpTextFieldsDelegate()
     }
 
     //MARK: - IBActions
@@ -38,6 +38,8 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func resendEmailPressed() {
+        
+        
         
     }
     
@@ -49,5 +51,22 @@ class LogInViewController: UIViewController {
         
     }
 
+    private func setUpTextFieldsDelegate() {
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        repeatPasswordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+        case emailTextField:
+            emailLabel.text = textField.hasText ? "Email" : ""
+        case passwordTextField:
+            passwordLabel.text = textField.hasText ? "Password" : ""
+        default:
+            passwordLabel.text = textField.hasText ? "Repeat Password" : ""
+        }
+    }
+    
 }
 
