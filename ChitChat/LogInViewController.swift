@@ -102,7 +102,7 @@ class LogInViewController: UIViewController {
         case "login":
             return emailTextField.text != "" && passwordTextField.text != ""
         case "register":
-            return emailTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text == passwordTextField.text
+            return emailTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text != ""
         default:
             return emailTextField.text != ""
         }
