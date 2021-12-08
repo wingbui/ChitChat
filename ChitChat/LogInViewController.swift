@@ -47,14 +47,26 @@ class LogInViewController: UIViewController {
         
     }
     
-    @IBAction func SignUpButtonPressed() {
-        
+    @IBAction func signUpButtonPresssed(_ sender: UIButton) {
+        configureUIFor(login: sender.titleLabel?.text == "Login")
     }
 
     private func setUpTextFieldsDelegate() {
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         repeatPasswordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    private func configureUIFor(login: Bool) {
+        
+        logInButton.setImage(UIImage(named: login ? "loginBtn" : "registerBtn"), for: .normal)
+        signUpButton.setTitle(login ? "Sign up" : "Login", for: .normal)
+        signUpLabel.text = login ? "Don't have an account" : "Have an account?"
+        UIView.animate(withDuration: 0.3) {
+            self.repeatPasswordLabel.isHidden = login
+            self.repeatPasswordTextField.isHidden = login
+            self.repeatPasswordLineView.isHidden = login
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
