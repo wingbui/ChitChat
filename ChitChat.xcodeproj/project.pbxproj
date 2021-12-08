@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AAF957827613F6C00737786 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF957727613F6C00737786 /* FCollectionReference.swift */; };
+		1AAF957B276142A600737786 /* FirebaseUserListenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF957A276142A600737786 /* FirebaseUserListenter.swift */; };
 		1AC830682760837C00E2A3D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC830672760837C00E2A3D8 /* User.swift */; };
 		1AC8306B276084A700E2A3D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8306A276084A700E2A3D8 /* Constants.swift */; };
 		1AEA33DF275D97DB0019EF91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEA33DE275D97DB0019EF91 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AAF957727613F6C00737786 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
+		1AAF957A276142A600737786 /* FirebaseUserListenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListenter.swift; sourceTree = "<group>"; };
 		1AC830672760837C00E2A3D8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1AC8306A276084A700E2A3D8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AEA33DB275D97DB0019EF91 /* ChitChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AAF9579276141F900737786 /* FirebaseHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				1AAF957727613F6C00737786 /* FCollectionReference.swift */,
+				1AAF957A276142A600737786 /* FirebaseUserListenter.swift */,
+			);
+			path = FirebaseHelpers;
+			sourceTree = "<group>";
+		};
 		1AC830692760838300E2A3D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 				1AEA33E2275D97DB0019EF91 /* LogInViewController.swift */,
 				1AC8306A276084A700E2A3D8 /* Constants.swift */,
 				1AC830692760838300E2A3D8 /* Model */,
+				1AAF9579276141F900737786 /* FirebaseHelpers */,
 				1AEA33E4275D97DB0019EF91 /* Main.storyboard */,
 				1AEA33E9275D97DE0019EF91 /* LaunchScreen.storyboard */,
 				1AEA33E7275D97DE0019EF91 /* Assets.xcassets */,
@@ -224,10 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AAF957B276142A600737786 /* FirebaseUserListenter.swift in Sources */,
 				1AC8306B276084A700E2A3D8 /* Constants.swift in Sources */,
 				1AC830682760837C00E2A3D8 /* User.swift in Sources */,
 				1AEA33E3275D97DB0019EF91 /* LogInViewController.swift in Sources */,
 				1AEA33DF275D97DB0019EF91 /* AppDelegate.swift in Sources */,
+				1AAF957827613F6C00737786 /* FCollectionReference.swift in Sources */,
 				1AEA33E1275D97DB0019EF91 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
 struct User: Codable, Equatable {
     
@@ -41,5 +42,15 @@ struct User: Codable, Equatable {
     
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id
+    }
+}
+
+func saveUserLocally(_ user: User) {
+    let encoder = JSONEncoder()
+    do {
+        let data = try encoder.encode(user)
+        UserDefaults.standard.set(data, forKey: kCURRENTUSER)
+    } catch {
+        print("Error saving user locally", error)
     }
 }
