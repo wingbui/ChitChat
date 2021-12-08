@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LogInViewController: UIViewController {
 
@@ -26,29 +27,45 @@ class LogInViewController: UIViewController {
     @IBOutlet private(set) var signUpLabel: UILabel!
     @IBOutlet private(set) var signUpButton: UIButton!
     
+    // MARK: - Vars
+    var isLogin = true
+    
     //MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTextFieldsDelegate()
+        setUpBackgroundTap()
+        configureUIFor(login: isLogin)
     }
 
     //MARK: - IBActions
     @IBAction func forgotPasswordPressed() {
-        
+        if isDataInputFor(type: "password") {
+            print("forgot")
+        } else {
+            ProgressHUD.showFailed("Email is required.")
+        }
     }
     
     @IBAction func resendEmailPressed() {
-        
-        
-        
+        if isDataInputFor(type: "password") {
+            print("resend")
+        } else {
+            ProgressHUD.showFailed("Email is required.")
+        }
     }
     
     @IBAction func logInButtonPressed() {
-        
+        if isDataInputFor(type: isLogin ? "login": "register") {
+            print("login")
+        } else {
+            ProgressHUD.showFailed("All fields required.")
+        }
     }
     
     @IBAction func signUpButtonPresssed(_ sender: UIButton) {
         configureUIFor(login: sender.titleLabel?.text == "Login")
+        isLogin.toggle()
     }
 
     private func setUpTextFieldsDelegate() {
@@ -78,6 +95,26 @@ class LogInViewController: UIViewController {
         default:
             passwordLabel.text = textField.hasText ? "Repeat Password" : ""
         }
+    }
+    
+    private func isDataInputFor(type: String) -> Bool {
+        switch type {
+        case "login":
+            return emailTextField.text != "" && passwordTextField.text != ""
+        case "register":
+            return emailTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text == passwordTextField.text
+        default:
+            return emailTextField.text != ""
+        }
+    }
+    
+    private func setUpBackgroundTap() {
+        let gestureTap = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        view.addGestureRecognizer(gestureTap)
+    }
+    
+    @objc func backgroundTapped() {
+        view.endEditing(false)
     }
     
 }
