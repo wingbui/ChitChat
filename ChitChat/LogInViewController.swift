@@ -57,7 +57,7 @@ class LogInViewController: UIViewController {
     
     @IBAction func logInButtonPressed() {
         if isDataInputFor(type: isLogin ? "login": "register") {
-            print("login")
+            isLogin ? loginUser() : registerUser()
         } else {
             ProgressHUD.showFailed("All fields required.")
         }
@@ -75,7 +75,6 @@ class LogInViewController: UIViewController {
     }
     
     private func configureUIFor(login: Bool) {
-        
         logInButton.setImage(UIImage(named: login ? "loginBtn" : "registerBtn"), for: .normal)
         signUpButton.setTitle(login ? "Sign up" : "Login", for: .normal)
         signUpLabel.text = login ? "Don't have an account" : "Have an account?"
@@ -115,6 +114,25 @@ class LogInViewController: UIViewController {
     
     @objc func backgroundTapped() {
         view.endEditing(false)
+    }
+    
+    private func loginUser() {
+        
+    }
+    
+    private func registerUser() {
+        if passwordTextField.text == repeatPasswordTextField.text {
+            FirebaseUserListener.shared.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!) { error in
+                if error == nil {
+                    ProgressHUD.showSuccess("Verification email sent.")
+                    self.resendEmailButton.isHidden = false
+                } else {
+                    ProgressHUD.showFailed(error?.localizedDescription)
+                }
+            }
+        } else {
+            ProgressHUD.showFailed("Passwords do not match, please try again")
+        }
     }
     
 }
