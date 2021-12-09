@@ -36,7 +36,7 @@ class FirebaseUserListener {
                         print("Error sent email verification: ", "\(String(describing: error?.localizedDescription))")
                     }
                 })
-            
+                
                 if authResult?.user != nil {
                     let user = User(id: authResult!.user.uid, email: email, username: email, pushId: "", avatarLink: "", status: "Hey there, I'm using ChitChat now")
                     
@@ -47,10 +47,25 @@ class FirebaseUserListener {
         }
     }
     
+    func resendVerificationEmail(email: String, completion: @escaping(_ error: Error?) -> Void) {
+        Auth.auth().currentUser?.reload(completion: { error in
+            
+            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+                completion(error)
+            })
+        })
+    }
+    
+    func resetPasswordFor(email: String, completion: @escaping(_ error: Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            completion(error)
+        }
+    }
+    
     // MARK: - CRUDs with database
     func saveUserToDatabase(_ user: User) {
         do {
-           try firebaseReference(.User).document(user.id).setData(from: user)
+            try firebaseReference(.User).document(user.id).setData(from: user)
         } catch {
             print("Error saving user to db", error.localizedDescription)
         }

@@ -41,7 +41,7 @@ class LogInViewController: UIViewController {
     //MARK: - IBActions
     @IBAction func forgotPasswordPressed() {
         if isDataInputFor(type: "password") {
-            print("forgot")
+            resetPassword()
         } else {
             ProgressHUD.showFailed("Email is required.")
         }
@@ -49,7 +49,7 @@ class LogInViewController: UIViewController {
     
     @IBAction func resendEmailPressed() {
         if isDataInputFor(type: "password") {
-            print("resend")
+            resendEmail()
         } else {
             ProgressHUD.showFailed("Email is required.")
         }
@@ -144,6 +144,26 @@ class LogInViewController: UIViewController {
             }
         } else {
             ProgressHUD.showFailed("Passwords do not match, please try again")
+        }
+    }
+    
+    private func resendEmail() {
+        FirebaseUserListener.shared.resendVerificationEmail(email: emailTextField.text!) { error in
+            if error == nil {
+                ProgressHUD.showSuccess("New verification email sent.")
+            } else {
+                ProgressHUD.showFailed(error!.localizedDescription)
+            }
+        }
+    }
+    
+    private func resetPassword() {
+        FirebaseUserListener.shared.resetPasswordFor(email: emailTextField.text!) { error in
+            if error == nil {
+                ProgressHUD.showSuccess("Reset password link sent")
+            } else {
+                ProgressHUD.showFailed(error!.localizedDescription)
+            }
         }
     }
     
