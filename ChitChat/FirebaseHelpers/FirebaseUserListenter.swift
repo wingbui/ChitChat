@@ -20,10 +20,10 @@ class FirebaseUserListener {
             if error == nil {
                 authResult?.user.sendEmailVerification(completion: { error in
                     if error != nil {
-                        print("Error sent email verification", error!.localizedDescription)
+                        print("Error sent email verification: ", "\(String(describing: error?.localizedDescription))")
                     }
                 })
-                
+            
                 if authResult?.user != nil {
                     let user = User(id: authResult!.user.uid, email: email, username: email, pushId: "", avatarLink: "", status: "Hey there, I'm using ChitChat now")
                     
