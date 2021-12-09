@@ -9,7 +9,7 @@ import UIKit
 import ProgressHUD
 
 class LogInViewController: UIViewController {
-
+    
     //MARK: - IBOutlets
     @IBOutlet private(set) var emailLabel: UILabel!
     @IBOutlet private(set) var emailTextField: UITextField!
@@ -37,7 +37,7 @@ class LogInViewController: UIViewController {
         setUpBackgroundTap()
         configureUIFor(login: isLogin)
     }
-
+    
     //MARK: - IBActions
     @IBAction func forgotPasswordPressed() {
         if isDataInputFor(type: "password") {
@@ -67,7 +67,7 @@ class LogInViewController: UIViewController {
         configureUIFor(login: sender.titleLabel?.text == "Login")
         isLogin.toggle()
     }
-
+    
     private func setUpTextFieldsDelegate() {
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -117,7 +117,19 @@ class LogInViewController: UIViewController {
     }
     
     private func loginUser() {
-        
+        FirebaseUserListener.shared.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { error, isEmailVerified in
+            if error == nil {
+                if isEmailVerified {
+                    //
+                } else {
+                    ProgressHUD.showFailed("Please verify email.")
+                    self.resendEmailButton.isHidden = false
+                }
+                
+            } else {
+                ProgressHUD.showFailed(error!.localizedDescription)
+            }
+        }
     }
     
     private func registerUser() {
