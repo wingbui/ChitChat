@@ -120,7 +120,7 @@ class LogInViewController: UIViewController {
         FirebaseUserListener.shared.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { error, isEmailVerified in
             if error == nil {
                 if isEmailVerified {
-                    //
+                    self.goToApplication()
                 } else {
                     ProgressHUD.showFailed("Please verify email.")
                     self.resendEmailButton.isHidden = false
@@ -165,6 +165,13 @@ class LogInViewController: UIViewController {
                 ProgressHUD.showFailed(error!.localizedDescription)
             }
         }
+    }
+    
+    private func goToApplication() {
+        let mainView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MainView") as! UITabBarController
+        
+        mainView.modalPresentationStyle = .fullScreen
+        self.present(mainView, animated: true)
     }
     
 }
