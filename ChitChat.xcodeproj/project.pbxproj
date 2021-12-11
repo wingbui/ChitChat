@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A9C25E127654B14000A86D0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9C25E027654B14000A86D0 /* SettingsTableViewController.swift */; };
 		1AAF957827613F6C00737786 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF957727613F6C00737786 /* FCollectionReference.swift */; };
 		1AAF957B276142A600737786 /* FirebaseUserListenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF957A276142A600737786 /* FirebaseUserListenter.swift */; };
 		1AC830682760837C00E2A3D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC830672760837C00E2A3D8 /* User.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A9C25E027654B14000A86D0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		1AAF957727613F6C00737786 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		1AAF957A276142A600737786 /* FirebaseUserListenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListenter.swift; sourceTree = "<group>"; };
 		1AC830672760837C00E2A3D8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				1AEA33DE275D97DB0019EF91 /* AppDelegate.swift */,
 				1AEA33E0275D97DB0019EF91 /* SceneDelegate.swift */,
 				1AEA33E2275D97DB0019EF91 /* LogInViewController.swift */,
+				1A9C25E027654B14000A86D0 /* SettingsTableViewController.swift */,
 				1AAF9579276141F900737786 /* FirebaseHelpers */,
 				1AC830692760838300E2A3D8 /* Model */,
 				1AE547302762D5B400C40BDE /* Helpers */,
@@ -250,6 +253,7 @@
 				1AC8306B276084A700E2A3D8 /* Constants.swift in Sources */,
 				1AC830682760837C00E2A3D8 /* User.swift in Sources */,
 				1AEA33E3275D97DB0019EF91 /* LogInViewController.swift in Sources */,
+				1A9C25E127654B14000A86D0 /* SettingsTableViewController.swift in Sources */,
 				1AEA33DF275D97DB0019EF91 /* AppDelegate.swift in Sources */,
 				1AAF957827613F6C00737786 /* FCollectionReference.swift in Sources */,
 				1AEA33E1275D97DB0019EF91 /* SceneDelegate.swift in Sources */,
